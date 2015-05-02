@@ -10,7 +10,7 @@ require 'date'
 require 'fileutils'
 
 # Where the photos are and where they're going.
-PHOTO_DIR  = ENV['PHOTO_DIR']  || "#{ENV['HOME']}/Pictures"
+PHOTO_DIR  = ENV['PHOTO_DIR']  || '/Volumes/Fatman/Dropbox/Photos'
 UPLOAD_DIR = ENV['UPLOAD_DIR'] || "#{PHOTO_DIR}/Incoming"
 FLASH_CARD = '/Volumes/CAMERA*'
 
@@ -86,7 +86,10 @@ for photo in photos
 
   puts "#{photo} -> #{newpath}"
   abort "File exists somehow: #{newpath}" if File.exists?(newpath)
-  FileUtils.mv(photo, newpath) unless ENV['TEST']
+  unless ENV['TEST']
+    FileUtils.mv(photo, newpath)
+    FileUtils.chmod(0644, newpath)
+  end
 
   # Delete from flash card
   # NO: This throws off the Image Capture app
