@@ -1,12 +1,13 @@
-# Camera upload helper scripts
+# Upload Photos simple app
 
-This is a collection of scripts for uploading and renaming files on Mac.
-Probably not widely useful, but feel free to copy paste.
+This is a simple Mac OSX app to upload photos from an attached SD card.
+It's actually just a wrapper around some Ruby scripts. To use, git clone
+and then drag the "Upload Photos" app to the Applications folder.
 
-# Testing
+## Testing
 
 TEST=1 DEBUG=1 ./upload-photos.rb
 
-# Author
+## Author
 
 Copyright (c) 2015 Nate Wiger.  Released under the MIT License.

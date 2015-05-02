@@ -25,6 +25,18 @@ end
 
 # List of files we will upload
 photo_files = []
+flash_cards = Dir[FLASH_CARD]
+abort "Error: No SD card(s) currently inserted" if flash_cards == 0
+s = flash_cards.length == 1 ? '' : 's'
+
+puts
+printf "Upload photos from attached SD card#{s} #{flash_cards.inspect} (y/n)? "
+ans = STDIN.gets
+unless ans =~ /^y/i
+  puts "Ok, nevermind, exiting..."
+  sleep 2
+  exit
+end
 
 # Use glob to handle multiple SD cards
 Dir[FLASH_CARD].each do |dir|
